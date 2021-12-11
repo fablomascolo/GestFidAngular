@@ -1,0 +1,32 @@
+<mat-drawer-container class="app-sidenav-container">
+    <!-- <mat-drawer #drawer mode="over" class="app-sidenav">
+    <mat-drawer #drawer mode="push" class="app-sidenav"> -->
+    
+    <mat-drawer #drawer [mode]="isScreenSmall ? 'push' : 'side'" 
+    [opened]="!isScreenSmall" class="app-sidenav mat-elevation-z10">
+
+      <mat-toolbar color="primary">
+        <span>Clienti</span>
+      </mat-toolbar>
+
+      <mat-list>
+        <mat-list-item> Pepper </mat-list-item>
+        <mat-list-item> Salt </mat-list-item>
+        <mat-list-item> Paprika </mat-list-item>
+      </mat-list>
+
+    </mat-drawer>
+  
+    <mat-drawer-content class="app-sidenav-content">
+      <app-toolbar (toggleSidenav)="drawer.toggle()"></app-toolbar>
+      <div class="wrapper">
+        <router-outlet></router-outlet>
+      </div>
+      <!-- <button type="button" mat-button (click)="drawer.open()">
+        apri sidenav
+      </button> -->
+    </mat-drawer-content>
+  </mat-drawer-container>
+
+  <!-- [mode]="isScreenSmall ? 'over' : 'side'"
+    [opened]="!isScreenSmall"   -->
