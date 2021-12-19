@@ -8,11 +8,14 @@ import { MaterialModule } from '../shared/material.module';
 import { SideNavComponent } from './components/side-nav/side-nav.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { RouterModule,Routes } from '@angular/router';
+import { ClientiService } from './services/clienti.service';
+import { HttpClientModule } from '@angular/common/http';
 
 const routes: Routes = [
   { path:'', component:GestfidAppComponent,
      children: [
-       {path:'', component:MainContentComponent}
+      {path:':codFid', component:MainContentComponent},
+      {path:'', component:MainContentComponent}
     ]
   },
   {path:'**',redirectTo:''}
@@ -29,7 +32,9 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forChild(routes),
     MaterialModule,
-    FlexLayoutModule
-  ]
+    FlexLayoutModule,
+    HttpClientModule
+  ],
+  providers: [ClientiService]
 })
 export class GestfidModule { }

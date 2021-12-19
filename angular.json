@@ -126,5 +126,8 @@
       }
     }
   },
-  "defaultProject": "AngularMaterialTest"
+  "defaultProject": "AngularMaterialTest",
+  "cli": {
+    "analytics": "8e671770-108c-4418-a939-c64b4db4aec6"
+  }
 }
