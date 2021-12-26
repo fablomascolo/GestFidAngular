@@ -1,40 +1,39 @@
-import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+
+import { ClientiService } from './services/clienti.service';
 import { CommonModule } from '@angular/common';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { GestfidAppComponent } from './gestfid-app.component';
+import { HttpClientModule } from '@angular/common/http';
 import { MainContentComponent } from './components/main-content/main-content.component';
 import { MaterialModule } from '../shared/material.module';
-
-import { SideNavComponent } from './components/side-nav/side-nav.component';
+import { NgModule } from '@angular/core';
+import { SideBarComponent } from './components/side-nav/side-nav.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
-import { RouterModule,Routes } from '@angular/router';
-import { ClientiService } from './services/clienti.service';
-import { HttpClientModule } from '@angular/common/http';
 
 const routes: Routes = [
-  { path:'', component:GestfidAppComponent,
-     children: [
-      {path:':codFid', component:MainContentComponent},
-      {path:'', component:MainContentComponent}
+  {
+    path: '', component: GestfidAppComponent,
+    children: [
+      {path: ':codFid', component: MainContentComponent},
+      {path: '', component: MainContentComponent}
     ]
   },
-  {path:'**',redirectTo:''}
-]
+  {path:'**', redirectTo: ''}
+
+];
 
 @NgModule({
-  declarations: [
-    GestfidAppComponent,
-    MainContentComponent,
-    SideNavComponent,
-    ToolbarComponent
-  ],
+  declarations: [GestfidAppComponent, ToolbarComponent, MainContentComponent, SideBarComponent],
   imports: [
     CommonModule,
-    RouterModule.forChild(routes),
     MaterialModule,
     FlexLayoutModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule.forChild(routes),
   ],
-  providers: [ClientiService]
+  providers: [
+    ClientiService,
+  ]
 })
 export class GestfidModule { }

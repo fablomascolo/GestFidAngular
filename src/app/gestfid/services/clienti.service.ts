@@ -1,23 +1,47 @@
+import { IClienti, IClienti2 } from '../Models/interfaces';
+
 import { HttpClient } from '@angular/common/http';
-import { getAllLifecycleHooks } from '@angular/compiler/src/lifecycle_reflector';
 import { Injectable } from '@angular/core';
-import { IClienti } from '../models/interface';
 import { baseURL } from '../app.constants';
+import { map } from 'rxjs/operators'
 
 @Injectable({
   providedIn: 'root'
 })
 export class ClientiService {
 
-  constructor(private httpclient: HttpClient) { }    
-    //creiamo un metodo per il recupero di tutti i clienti
-    getAll(){
-      const Url=`${baseURL}/cerca`;
-      return this.httpclient.get<IClienti[]>(Url);
+  constructor(private httpClient: HttpClient) { }
+
+  getAll() {
+
+    const Url = `${baseURL}/cerca/`;
+
+    return this.httpClient.get<IClienti[]>(Url);
+  }
+
+  getByCodFid(codfid : string) {
+
+    const Url = `${baseURL}/cerca/codice/${codfid}`;
+
+    return this.httpClient.get<IClienti>(Url)
+      .pipe(map(data => this.convertDataClienti(data)));
+
+  }
+
+  private convertDataClienti(data: IClienti): IClienti2 {
+
+    return {
+      codFid: data.codFid,
+      nominativo: data.nominativo,
+      comune: data.comune,
+      idAvatar: data.idAvatar,
+      stato: (data.stato > 0) ? 'Attivo' : 'Non Attivo',
+      bollini: data.transazioni.map(a => a.bollini).reduce((a,c)=>a+c),
+      spese: data.transazioni.length,
+      dataSpesa: new Date(Math.max.apply(null, data.transazioni.map(function(e) {
+        return new Date(e.data);
+      })))
     }
-    //creiamo un metodo per recuperare i dati di uno specifico cliente
-    getByCodFid(codfid:string){
-      const Url = `${baseURL}/cerca/codice/${codfid}`;
-      return this.httpclient.get<IClienti[]>(Url);
-    }
+
+  }
 }

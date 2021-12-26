@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { MatIconRegistry } from '@angular/material/icon';
+
 import { DomSanitizer } from '@angular/platform-browser';
+import { MatIconRegistry } from '@angular/material/icon';
 
 @Component({
   selector: 'app-gestfid-app',
@@ -8,10 +9,12 @@ import { DomSanitizer } from '@angular/platform-browser';
   styleUrls: ['./gestfid-app.component.scss']
 })
 export class GestfidAppComponent implements OnInit {
-  constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer ) 
-    {
-      iconRegistry.addSvgIconSet(sanitizer.bypassSecurityTrustResourceUrl('assets/avatars.svg'))
-    }
+
+  constructor(iconRegistry: MatIconRegistry,sanitizer: DomSanitizer) {
+    iconRegistry.addSvgIconSet(sanitizer.bypassSecurityTrustResourceUrl('assets/avatars.svg'));
+  }
+
   ngOnInit(): void {
   }
+
 }
