@@ -40,7 +40,8 @@ export class ClientiService {
       spese: data.transazioni.length,
       dataSpesa: new Date(Math.max.apply(null, data.transazioni.map(function(e) {
         return new Date(e.data);
-      })))
+      }))),
+      transazioni: data.transazioni
     }
 
   }

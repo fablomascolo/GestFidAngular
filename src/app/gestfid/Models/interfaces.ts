@@ -17,6 +17,7 @@ export interface IClienti2 {
   bollini: number
   spese: number
   dataSpesa: Date
+  transazioni: Array<ITransazioni>
 }
 
 export interface ITransazioni {

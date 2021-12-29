@@ -22,8 +22,10 @@
             L'ultima spesa è stata eseguita il {{cliente.dataSpesa | date:"dd/MM/yyyy"}}
           </p>
         </mat-tab>
+        <mat-tab label="Spese">
+          <app-sales [sales]="cliente.transazioni"></app-sales>
+        </mat-tab>
       </mat-tab-group>
-      
     </mat-card-content>
     <!--
     <mat-card-actions>

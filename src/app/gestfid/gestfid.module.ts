@@ -10,6 +10,7 @@ import { MaterialModule } from '../shared/material.module';
 import { NgModule } from '@angular/core';
 import { SideBarComponent } from './components/side-nav/side-nav.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
+import { SalesComponent } from './components/sales/sales.component';
 
 const routes: Routes = [
   {
@@ -24,7 +25,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [GestfidAppComponent, ToolbarComponent, MainContentComponent, SideBarComponent],
+  declarations: [GestfidAppComponent, ToolbarComponent, MainContentComponent, SideBarComponent, SalesComponent],
   imports: [
     CommonModule,
     MaterialModule,

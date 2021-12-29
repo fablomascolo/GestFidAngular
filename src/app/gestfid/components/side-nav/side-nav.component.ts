@@ -38,14 +38,12 @@ export class SideBarComponent implements OnInit {
 
     this.getClienti();
 
-    //in caso di device con dimensione inferiore a 720px 
-    //(che abbiamo gestito assegnando True al boolean IsScreenSmall)
-    //se si seleziona un cliente dopo aver popolato il maincontent
-    //la sidenav si chiuderà automaticamente
     this.router.events.subscribe(() => {
+
       if (this.isScreenSmall) {
         this.drawer.close();
       }
+
     });
   }
 
