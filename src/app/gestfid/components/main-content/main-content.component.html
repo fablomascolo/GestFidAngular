@@ -27,12 +27,13 @@
         </mat-tab>
       </mat-tab-group>
     </mat-card-content>
-    <!--
-    <mat-card-actions>
-      <button mat-button>LIKE</button>
-      <button mat-button>SHARE</button>
+
+    <mat-card-actions *ngIf="">
+      <button mat-button (click)="Modifica(cliente.codFid)">Modifica</button>
+      <button mat-button (click)="Elimina(cliente.codFid)">Elimina</button>
     </mat-card-actions>
-    -->
+
+    <input id="codfid" type="hidden" value="{{cliente.codFid}}">
   </mat-card>
 </div>
 

@@ -21,8 +21,19 @@ export interface IClienti2 {
 }
 
 export interface ITransazioni {
-  id: number
-  data: Date
+  id: bigint
+  dataTransazione: Date
+  codfid: string
   puntoVendita: string
   bollini: number
+  cliente: IClienti
+}
+
+export interface IMessage {
+  messaggio: string
+}
+
+export interface IStatoCliente {
+  value: number;
+  viewValue: string;
 }

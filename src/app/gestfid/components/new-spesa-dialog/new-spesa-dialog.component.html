@@ -1,0 +1,40 @@
+<h2 mat-dialog-title>Aggiungi nuova spesa</h2>
+
+<mat-dialog-content>
+
+  <div class="example-container">
+
+    <mat-form-field appearance="fill">
+      <mat-label>Codice Fidelity</mat-label>
+      <input matInput [formControl]="codfid" readonly> 
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Choose a date</mat-label>
+      <input matInput [matDatepicker]="picker" [formControl] = "dataTransazione">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Punto Vendita</mat-label>
+      <input matInput [formControl] = "puntoVendita" required maxLength="20">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Bollini</mat-label>
+      <input matInput [formControl] = "bollini" required maxLength="5">
+    </mat-form-field>
+
+  </div>
+
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-button color="primary" (click)="save()">
+    <mat-icon>save</mat-icon> Salva
+  </button>
+  <button mat-button color="primary" (click)="dismiss()">
+    <mat-icon>cancel</mat-icon> Annulla
+  </button>
+</mat-dialog-actions>    

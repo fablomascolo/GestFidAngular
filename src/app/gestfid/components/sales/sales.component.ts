@@ -2,6 +2,7 @@ import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/cor
 
 import { ITransazioni } from '../../Models/interfaces';
 import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
@@ -16,6 +17,8 @@ export class SalesComponent implements OnInit, AfterViewInit  {
 
   @Input() sales: ITransazioni[];
   @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
+
 
   constructor() { }
 
@@ -27,6 +30,7 @@ export class SalesComponent implements OnInit, AfterViewInit  {
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
   }
 
   applyFilter(event: Event) {
