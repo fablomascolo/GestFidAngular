@@ -6,6 +6,7 @@ import { ClientiService } from '../../services/clienti.service';
 import { SharedService } from '../../services/shared.service';
 import {IClienti2} from '../../Models/interfaces';
 import { NewClienteDialogComponent } from '../new-cliente-dialog/new-cliente-dialog.component';
+import { MatSnackBar, MatSnackBarRef, SimpleSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-main-content',
@@ -21,7 +22,8 @@ export class MainContentComponent implements OnInit {
       private route: ActivatedRoute,
       private clienteService: ClientiService,
       public sharedService:SharedService,
-      private dialog : MatDialog) { }
+      private dialog : MatDialog, 
+      private snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
@@ -61,8 +63,10 @@ export class MainContentComponent implements OnInit {
 
   Elimina(Codfid: string) {
     console.log("Eliminazione Codice: " + Codfid);
-
     this.clienteService.delCliente(Codfid);
+    this.openSnackBar(`Cancellazione effettuata`, "Chiudi")
+    .onAction().subscribe(() => {            
+    });
   }
 
   Modifica(Codfid: string) {
@@ -72,7 +76,8 @@ export class MainContentComponent implements OnInit {
       width: '450px',
       //height: '400px',
       data: {
-        codFid: Codfid
+        codFid: Codfid,
+        title: "Modifica cliente"
       }
     });
 
@@ -81,7 +86,12 @@ export class MainContentComponent implements OnInit {
       this.getDatiCliente();
     });
 
-  }
 
+  }
+  //implementiamo uno snackbar per descrivere l'eventuale errore in fase di inserimento
+  openSnackBar(message: string, action: string) : MatSnackBarRef<SimpleSnackBar> {
+    return this.snackBar.open(message, action, {
+      duration: 5000,
+  })};
 
 }

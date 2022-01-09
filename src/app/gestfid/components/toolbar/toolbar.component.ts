@@ -22,7 +22,10 @@ export class ToolbarComponent implements OnInit {
   openDialogCliente() {
 
     let dialogRef = this.dialog.open(NewClienteDialogComponent, {
-      width: '450px'
+      width: '450px',
+      data: {
+        title: "Aggiungi nuovo cliente"
+      }
     });
 
     dialogRef.afterClosed().subscribe(result => {

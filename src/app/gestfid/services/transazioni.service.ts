@@ -55,7 +55,7 @@ export class TransazioniService {
   }
 
   //metodo per la eliminazione della transazione 
-  delTransazione(id: number) {
+  delTransazione(id: bigint) {
     const Url = `${baseURL}/transazioni/elimina/${id}`;
     this.httpClient.delete<IMessage>(Url)
     .pipe(catchError(this.handleError))

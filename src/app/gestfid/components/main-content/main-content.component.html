@@ -28,7 +28,7 @@
       </mat-tab-group>
     </mat-card-content>
 
-    <mat-card-actions *ngIf="">
+    <mat-card-actions *ngIf="cliente">
       <button mat-button (click)="Modifica(cliente.codFid)">Modifica</button>
       <button mat-button (click)="Elimina(cliente.codFid)">Elimina</button>
     </mat-card-actions>
